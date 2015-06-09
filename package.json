@@ -1,0 +1,17 @@
+{
+  "name": "file-appender",
+  "version": "1.0.0",
+  "description": "Append a list of files into one stream.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "file",
+    "files",
+    "append",
+    "stream"
+  ],
+  "author": "Rodrigo Medeiros",
+  "license": "MIT"
+}
