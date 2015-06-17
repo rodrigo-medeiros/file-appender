@@ -13,5 +13,8 @@
     "stream"
   ],
   "author": "Rodrigo Medeiros",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "q": "^1.4.1"
+  }
 }
