@@ -1,11 +1,11 @@
-var FilePiper = require('./lib/file-piper');
+var FileAppender = require('./lib/file-appender');
 var helper = require('./lib/helper');
 
-module.exports = filePiper;
+module.exports = appender;
 
-function filePiper (input) {
+function appender (input) {
 
-  var destination = new FilePiper();
+  var destination = new FileAppender();
 
   return helper.pipeNext(input, destination);
 
