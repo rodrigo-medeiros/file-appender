@@ -4,6 +4,7 @@ var fs = Promise.promisifyAll(require('fs'));
 var path = require('path');
 var stream = require('stream');
 var appender = require('../index');
+var exec = require('child_process').exec;
 
 var dirPath = path.join(__dirname, "/files");
 var files = [
@@ -21,6 +22,67 @@ describe("When an array of valid files is passed", function () {
       contents = contentsArr.join('');
       done();
     });
+
+  });
+
+  after(function (done) {
+
+    removeOutputFile(done);
+
+  });
+
+  it("should create a transform stream", function (done) {
+
+    var filesArr = [].slice.call(files);
+    var transformStream = appender(filesArr);
+
+    expect(transformStream instanceof stream.Transform).to.be(true);
+    done();
+
+  });
+
+  it("should create a file with the contents of the files inside the dir path passed if piped to a write stream", function (done) {
+
+    var transformStream = appender(dirPath);
+    var output = fs.createWriteStream(path.join(dirPath, 'output.txt'));
+
+    transformStream 
+      .pipe(output)
+      .on('finish', function () {
+
+        fs.readFileAsync(path.join(dirPath, 'output.txt')).then(function (text) {
+
+          expect(contents).to.be(text.toString());
+          done();
+
+        }).catch(function (err) {
+
+          done(err);
+
+        });
+
+      });
+
+  });
+
+});
+
+describe("When just a dir path is passed", function () {
+
+  var contents = "";
+
+  before(function (done) {
+
+    readFiles(files).then(function (contentsArr) {
+      contents = contentsArr.join('');
+      done();
+    });
+
+  });
+
+  after(function (done) {
+
+    removeOutputFile(done);
 
   });
 
@@ -61,7 +123,7 @@ describe("When an array of valid files is passed", function () {
 
 });
 
-describe("When just one path is passed", function () {
+describe("When just a file path is passed", function () {
 
   var contents = "";
 
@@ -73,6 +135,12 @@ describe("When just one path is passed", function () {
       contents = contentsArr.join('');
       done();
     });
+
+  });
+
+  after(function (done) {
+
+    removeOutputFile(done);
 
   });
   
@@ -88,8 +156,8 @@ describe("When just one path is passed", function () {
 
   it("should create a file with the contents of the file passed if piped to a write stream", function (done) {
 
-    var filesArr = [].slice.call(files);
-    var transformStream = appender(filesArr);
+    var filePath = path.join(dirPath, "file1.txt");
+    var transformStream = appender(filePath);
     var output = fs.createWriteStream(path.join(dirPath, 'output.txt'));
 
     transformStream 
@@ -150,4 +218,11 @@ function readFiles (files) {
 
   return Promise.all(promises);
 
+}
+
+function removeOutputFile (done) {
+  exec("rm ./test/files/output.txt", function (error, stdout, sdterr) {
+    if (error) return done(error);
+    done();
+  });
 }
