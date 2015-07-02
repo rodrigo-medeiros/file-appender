@@ -12,6 +12,6 @@ function appender (input) {
 
   var destination = new FileAppender();
 
-  return helper.pipeNext([].slice.call(input), destination);
+  return helper.pipeNext(input, destination);
 
 }
