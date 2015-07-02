@@ -1,7 +1,7 @@
 {
   "name": "file-appender",
   "version": "1.0.0",
-  "description": "Creates a transform stream from a list of files.",
+  "description": "Pipe a list of files to a transform stream.",
   "author": "Rodrigo Medeiros <rodrigo.mangue@gmail.com> (https://coderbits.com/rodrigomangue)",
   "repository": "rodrigo-medeiros/file-appender",
   "engines": {
