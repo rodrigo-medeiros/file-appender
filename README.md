@@ -36,4 +36,5 @@ appender('./foo.txt').pipe(output);
 
 ## License
 
-Licensed under the [MIT License](https://github.com/rodrigo-medeiros/file-appender/blob/master/LICENSE)
+Licensed under the [MIT license](http://opensource.org/licenses/MIT)
+
