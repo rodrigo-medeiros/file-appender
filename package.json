@@ -1,16 +1,21 @@
 {
   "name": "file-appender",
-  "version": "1.0.1",
+  "version": "0.0.0-semantically-released",
   "description": "Pipe a list of files to a transform stream.",
   "author": "Rodrigo Medeiros <rodrigo.mangue@gmail.com> (https://coderbits.com/rodrigomangue)",
-  "repository": "rodrigo-medeiros/file-appender",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rodrigo-medeiros/file-appender.git"
+  },
   "engines": {
     "node": ">=0.12.0"
   },
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/"
+    "commit": "git-cz",
+    "test": "mocha test/",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "keywords": [
     "file",
@@ -18,10 +23,15 @@
     "append",
     "stream"
   ],
-  "license": "MIT",
   "devDependencies": {
     "bluebird": "^2.9.30",
+    "commitizen": "1.0.4",
+    "cz-conventional-changelog": "1.1.1",
     "expect.js": "^0.3.1",
-    "mocha": "^1.21.4"
+    "mocha": "^1.21.4",
+    "semantic-release": "^4.3.5"
+  },
+  "czConfig": {
+    "path": "node_modules/cz-conventional-changelog"
   }
 }

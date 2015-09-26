@@ -1,11 +1,17 @@
+sudo: false
 language: node_js
+cache:
+  directories:
+    - node_modules
+notifications:
+  email: false
 node_js:
-- '0.12'
-deploy:
-  provider: npm
-  email: rodrigo.mangue@gmail.com
-  api_key:
-    secure: fKRh0fZPm415ndPvr6SNVci8tuzaydHMmO86Xht9YKUS1E5WiKuoa5CIoe3YKR4H/gDBS3Lln03F24YNJRfx7pySkVPlFjS2DoYX0d1M0dovOwEwV+ODE5fg/euLcqGed/VIpKmVw32VBa+bXLIlO49Vi6oGjZiBP8A2mLhs8jlHSD/BbswCeTqv1c4MPcsmy0gnwZ4hoovXQC79NCaLXJcR1Kpc7LtC1NRs2/HjYBiH1CacQEM1hoKpjqnywcvO00zdDeq+89eSuICs/T3Kd5FqjqmEGngb8TPgzIezQxIJh4z1dlLswrYo9M5Pc1cETNnbw/Acd2PvxnBeiKmM5Nq2RShGdjCC7O4byF43fBB2rcd8m1gFepk1jkzpCLUnlTHfLeMxiSa9+yOoeXiEriv320n+ioFj7HqVIrHFW2DbmtOXFsrfZRWyF2Gxhi6BZgMXTXw75eayq/ZvdkbOyk4ywCcyb+pPktG4FzyY1vkuA/v9LWYmxdAFEIZG3gUpR6ZGXVYVmviqY1VMeK2GJQk8Nq54C3bNVCRy1bPcNrDFO+2uTqMQze3oa573oV5rtcU3CuAJWowiZuOqyUw0d1N47otxXlxYD5nFOU0xEjantz0s/+DjajzeqW+0325k5T6iWQRVA/I4Yagcv/5b9Uvg0V/m455qBJSDOwF4Srs=
-  on:
-    tags: true
-    repo: rodrigo-medeiros/file-appender
+  - 0.12 
+before_install:
+  - npm i -g npm@^2.0.0
+before_script:
+  - npm prune
+script:
+  - npm run test
+after_success:
+  - npm run semantic-release
