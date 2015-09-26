@@ -1,6 +1,6 @@
 {
   "name": "file-appender",
-  "version": "1.0.1",
+  "version": "0.0.0-semantically-released",
   "description": "Pipe a list of files to a transform stream.",
   "author": "Rodrigo Medeiros <rodrigo.mangue@gmail.com> (https://coderbits.com/rodrigomangue)",
   "repository": {
@@ -14,7 +14,8 @@
   "main": "index.js",
   "scripts": {
     "commit": "git-cz",
-    "test": "mocha test/",
+    "test": "mocha test/ -w",
+    "test:single": "mocha test/",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "keywords": [
