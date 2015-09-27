@@ -1,6 +1,5 @@
 {
   "name": "file-appender",
-  "version": "0.0.0-semantically-released",
   "description": "Pipe a list of files to a transform stream.",
   "author": "Rodrigo Medeiros <rodrigo.mangue@gmail.com> (https://coderbits.com/rodrigomangue)",
   "repository": {
