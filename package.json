@@ -1,32 +1,36 @@
 {
   "name": "file-appender",
+  "version": "0.0.0-semantically-released",
   "description": "Pipe a list of files to a transform stream.",
-  "author": "Rodrigo Medeiros <rodrigo.mangue@gmail.com> (https://coderbits.com/rodrigomangue)",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "commit": "git-cz",
+    "test": "mocha test/test.js -w",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/rodrigo-medeiros/file-appender.git"
   },
-  "engines": {
-    "node": ">=0.12.0"
-  },
-  "license": "MIT",
-  "main": "index.js",
-  "scripts": {
-    "commit": "git-cz",
-    "test": "mocha test/ -w",
-    "test:single": "mocha test/",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
-  },
   "keywords": [
-    "file",
-    "files",
+    "stream",
     "append",
-    "stream"
+    "files",
+    "file"
   ],
+  "author": "Rodrigo Medeiros <rodrigo.mangue@gmail.com> (https://github.com/rodrigo-medeiros)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rodrigo-medeiros/file-appender/issues"
+  },
+  "homepage": "https://github.com/rodrigo-medeiros/file-appender#readme",
   "devDependencies": {
     "bluebird": "^2.9.30",
-    "commitizen": "1.0.4",
-    "cz-conventional-changelog": "1.1.1",
+    "commitizen": "1.0.5",
+    "cz-conventional-changelog": "1.1.2",
     "expect.js": "^0.3.1",
     "mocha": "^1.21.4",
     "semantic-release": "^4.3.5"
