@@ -1,6 +1,6 @@
 {
   "name": "file-appender",
-  "version": "0.0.0-semantically-released",
+  "version": "0.0.0",
   "description": "Pipe a list of files to a transform stream.",
   "main": "index.js",
   "directories": {
