@@ -2,3 +2,4 @@ node_modules/
 *.sw*
 test/files/output.txt
 npm-debug.log
+coverage/
