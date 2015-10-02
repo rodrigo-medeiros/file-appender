@@ -46,7 +46,7 @@ describe("When an array of valid files is passed", function () {
     var transformStream = appender(dirPath);
     var output = fs.createWriteStream(path.join(dirPath, 'output.txt'));
 
-    transformStream 
+    transformStream
       .pipe(output)
       .on('finish', function () {
 
@@ -62,6 +62,63 @@ describe("When an array of valid files is passed", function () {
         });
 
       });
+
+  });
+
+});
+
+describe("When an array of valid and non-valid files is passed", function () {
+
+  var contents = "";
+
+  before(function (done) {
+
+    readFiles(files).then(function (contentsArr) {
+      contents = contentsArr.join('');
+      done();
+    });
+
+  });
+
+  it("should create a file with the contents of the files inside the dir path passed if piped to a write stream", function (done) {
+
+    var transformStream = appender(dirPath);
+    var output = fs.createWriteStream(path.join(dirPath, 'output.txt'));
+
+    transformStream
+      .pipe(output)
+      .on('finish', function () {
+
+        fs.readFileAsync(path.join(dirPath, 'output.txt')).then(function (text) {
+
+          expect(contents).to.be(text.toString());
+          done();
+
+        }).catch(function (err) {
+
+          done(err);
+
+        });
+
+      });
+
+  });
+
+  after(function (done) {
+
+    removeOutputFile(done);
+
+  });
+
+  it("should create a transform stream", function (done) {
+
+    files.push('/foo/bar.txt')
+    var filesArr = [].slice.call(files);
+    var transformStream = appender(filesArr);
+
+    expect(transformStream instanceof stream.Transform).to.be(true);
+    files.pop();
+    done();
 
   });
 
@@ -102,7 +159,7 @@ describe("When just a dir path is passed", function () {
     var transformStream = appender(filesArr);
     var output = fs.createWriteStream(path.join(dirPath, 'output.txt'));
 
-    transformStream 
+    transformStream
       .pipe(output)
       .on('finish', function () {
 
@@ -160,7 +217,7 @@ describe("When just a file path is passed", function () {
     var transformStream = appender(filePath);
     var output = fs.createWriteStream(path.join(dirPath, 'output.txt'));
 
-    transformStream 
+    transformStream
       .pipe(output)
       .on('finish', function () {
 
@@ -209,7 +266,7 @@ describe("When invalid stuff is passed", function () {
 function readFiles (files) {
 
   var promises = [];
- 
+
   files.forEach(function (file) {
     promises.push(fs.readFileAsync(file).then(function (text) {
       return text.toString();
