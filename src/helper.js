@@ -1,5 +1,5 @@
-var fs = require('fs');
-var path = require('path');
+import fs from 'fs';
+import path from 'path';
 
 exports.init = init;
 exports.pipeNext = pipeNext;
@@ -25,9 +25,9 @@ function init (input) {
 
           files.forEach(function (file) {
             var filePath = path.join(input, file);
-            var stat = fs.statSync(filePath);
+            var stats = fs.statSync(filePath);
 
-            if (stat.isFile()) {
+            if (stats.isFile()) {
               inputAsArray.push(filePath);
 
             }
@@ -44,7 +44,7 @@ function init (input) {
       throw new TypeError(input + " is not a valid input.");
 
     }
-  
+
   }
 
 }
@@ -53,7 +53,7 @@ function pipeNext (input, destination) {
 
   if (!input.length) {
     destination.end();
-    return destination; 
+    return destination;
 
   } else {
     var file = input.shift();
@@ -64,8 +64,8 @@ function pipeNext (input, destination) {
         if (err.code === 'ENOENT') {
           pipeNext(input, destination);
 
-        } 
-        
+        }
+
       })
       .on('end', function () {
         pipeNext(input, destination);

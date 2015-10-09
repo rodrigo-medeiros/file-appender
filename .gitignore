@@ -1,6 +1,7 @@
-node_modules/
+node_modules
 *.sw*
 test/files/output.txt
 npm-debug.log
-coverage/
-.idea/
+coverage
+.idea
+dist

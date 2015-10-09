@@ -1,6 +1,6 @@
-var fs = require('fs');
-var util = require('util');
-var Transform = require('stream').Transform;
+import fs from 'fs';
+import util from 'util';
+import {Transform} from 'stream';
 util.inherits(FileAppender, Transform);
 
 module.exports = FileAppender;

@@ -1,5 +1,5 @@
-var FileAppender = require('./lib/file-appender');
-var helper = require('./lib/helper');
+import FileAppender from './file-appender';
+import helper from './helper';
 
 module.exports = appender;
 

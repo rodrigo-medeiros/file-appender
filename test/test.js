@@ -3,7 +3,7 @@ var Promise = require('bluebird');
 var fs = Promise.promisifyAll(require('fs'));
 var path = require('path');
 var stream = require('stream');
-var appender = require('../index');
+var appender = require('../src/index');
 var exec = require('child_process').exec;
 
 var dirPath = path.join(__dirname, "/files");
