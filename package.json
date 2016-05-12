@@ -7,8 +7,8 @@
     "test": "test"
   },
   "scripts": {
-		"prebuild": "rm -rf dist && mkdir dist",
-		"build": "babel src --out-dir dist",
+    "prebuild": "rm -rf dist && mkdir dist",
+    "build": "babel src --out-dir dist",
     "commit": "git-cz",
     "check-coverage": "istanbul check-coverage --statements 100 --branches 87.5 --functions 100 --lines 100",
     "report-coverage": "cat ./coverage/lcov.info | codecov",
@@ -34,7 +34,7 @@
   "homepage": "https://github.com/rodrigo-medeiros/file-appender#readme",
   "devDependencies": {
     "babel": "5.8.23",
-    "bluebird": "^2.9.30",
+    "bluebird": "2.10.2",
     "codecov.io": "0.1.6",
     "commitizen": "1.0.5",
     "cz-conventional-changelog": "1.1.2",
