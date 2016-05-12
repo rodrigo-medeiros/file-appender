@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+import fs from "fs";
+import path from "path";
 
 exports.init = init;
 exports.pipeNext = pipeNext;
@@ -12,7 +12,7 @@ function init (input) {
   } else {
     var inputAsArray = [];
 
-    if (typeof input === 'string') {
+    if (typeof input === "string") {
 
       if (input) {
         var stat = fs.statSync(input);
@@ -60,14 +60,14 @@ function pipeNext (input, destination) {
     var readable = fs.createReadStream(file);
 
     return readable
-      .on('error', function (err) {
-        if (err.code === 'ENOENT') {
+      .on("error", function (err) {
+        if (err.code === "ENOENT") {
           pipeNext(input, destination);
 
         }
 
       })
-      .on('end', function () {
+      .on("end", function () {
         pipeNext(input, destination);
 
       })

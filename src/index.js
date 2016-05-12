@@ -1,5 +1,5 @@
-import FileAppender from './file-appender';
-import helper from './helper';
+import FileAppender from "./file-appender";
+import helper from "./helper";
 
 module.exports = appender;
 

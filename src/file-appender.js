@@ -1,6 +1,5 @@
-import fs from 'fs';
-import util from 'util';
-import {Transform} from 'stream';
+import util from "util";
+import {Transform} from "stream";
 util.inherits(FileAppender, Transform);
 
 module.exports = FileAppender;
